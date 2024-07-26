@@ -1,0 +1,163 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section class="flex flex-col gap-2">
+  <div class="grid grid-cols-3 gap-1">
+    <Image
+      draggable="false"
+      width="88"
+      height="31"
+      class="p-[1px] border border-zinc-800"
+      src="https://anlucas.neocities.org/macmade2.gif"
+      alt="made with mac"
+    />
+    <Image
+      draggable="false"
+      width="88"
+      height="31"
+      class="p-[1px] border border-zinc-800"
+      src="https://cyber.dabamos.de/88x31/anythingbut.gif"
+      alt="88x31"
+    />
+    <a href="https://github.com/NotAriRay" target="_blank"
+      ><Image
+        draggable="false"
+        width="88"
+        height="31"
+        class="p-[1px] border border-zinc-800"
+        src="https://cyber.dabamos.de/88x31/github-check.gif"
+        alt="88x31"
+      /></a
+    >
+  </div>
+  <div class="grid grid-cols-3 gap-1">
+    <Image
+      draggable="false"
+      width="88"
+      height="31"
+      class="p-[1px] border border-zinc-800"
+      src="https://cyber.dabamos.de/88x31/z3r0s.gif"
+      alt="88x31"
+    />
+    <Image
+      draggable="false"
+      width="88"
+      height="31"
+      class="p-[1px] border border-zinc-800"
+      src="https://cyber.dabamos.de/88x31/vim.gif"
+      alt="88x31"
+    />
+    <Image
+      draggable="false"
+      width="88"
+      height="31"
+      class="p-[1px] border border-zinc-800"
+      src="https://i.imgur.com/BXGnyCI.png"
+      alt="88x31"
+    />
+  </div>
+
+  <div class="grid grid-cols-3 gap-1">
+    <Image
+      draggable="false"
+      width="88"
+      height="31"
+      class="p-[1px] border border-zinc-800"
+      src="https://i.imgur.com/hl7IOU3.png"
+      alt="88x31"
+    />
+    <Image
+      draggable="false"
+      width="88"
+      height="31"
+      class="p-[1px] border border-zinc-800"
+      src="https://i.imgur.com/WeTx8o9.png"
+      alt="88x31"
+    />
+    <Image
+      draggable="false"
+      width="88"
+      height="31"
+      class="p-[1px] border border-zinc-800"
+      src="https://i.imgur.com/fbqH1jo.png"
+      alt="88x31"
+    />
+  </div>
+  <div class="grid grid-cols-3 gap-1">
+    <Image
+      draggable="false"
+      width="88"
+      height="31"
+      class="p-[1px] border border-zinc-800"
+      src="https://i.imgur.com/CxtI8uq.png"
+      alt="88x31"
+    />
+    <Image
+      draggable="false"
+      width="88"
+      height="31"
+      class="p-[1px] border border-zinc-800"
+      src="https://i.imgur.com/ZlME85i.png"
+      alt="88x31"
+    />
+    <Image
+      draggable="false"
+      width="88"
+      height="31"
+      class="p-[1px] border border-zinc-800"
+      src="https://i.imgur.com/XWeORjj.png"
+      alt="88x31"
+    />
+  </div>
+</section>
+<style>
+  img {
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: -webkit-optimize-contrast;
+    background: #e8e6df;
+  }
+  @keyframes unblur-in {
+    from {
+      filter: blur(10px);
+      opacity: 50%;
+    }
+    to {
+      filter: blur(0px);
+      opacity: 100%;
+    }
+  }
+  div {
+    animation: unblur-in 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  div:nth-child(1) {
+    transform: perspective(1000px) rotateX(20deg) rotateY(1deg) rotateZ(3deg);
+    animation-delay: 0.1s;
+  }
+  div:nth-child(2) {
+    transform: perspective(1000px) rotateX(15deg) rotateY(2deg) rotateZ(2deg);
+    animation-delay: 0.2s;
+  }
+  div:nth-child(3) {
+    transform: perspective(1000px) rotateX(10deg) rotateY(3deg) rotateZ(1deg);
+    animation-delay: 0.3s;
+  }
+  div:nth-child(4) {
+    transform: perspective(1000px) rotateX(0deg) rotateY(4deg);
+    animation-delay: 0.4s;
+  }
+  div:nth-child(5) {
+    transform: perspective(1000px) rotateX(-10deg) rotateY(3deg) rotateZ(-1deg);
+    animation-delay: 0.5s;
+  }
+  div:nth-child(6) {
+    transform: perspective(1000px) rotateX(-15deg) rotateY(2deg) rotateZ(-2deg);
+    animation-delay: 0.6s;
+  }
+  div:nth-child(7) {
+    transform: perspective(1000px) rotateX(-20deg) rotateY(1deg) rotateZ(-3deg);
+    animation-delay: 0.7s;
+  }
+</style>

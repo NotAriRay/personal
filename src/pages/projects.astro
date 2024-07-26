@@ -1,0 +1,80 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { projects } from "@/projects";
+function calculateValue(index: number, length: number) {
+  index = index + 1;
+  const midpointIndex = Math.floor(length / 2);
+  if (index <= midpointIndex) {
+    const value = (midpointIndex - index) * 10 + 10;
+    return value;
+  }
+  if (index > midpointIndex) {
+    const value = -1 * (index - midpointIndex) * 10;
+    return value;
+  }
+}
+---
+
+<BaseLayout>
+  <div id="top-center">
+    <a class="bg-black border text-3xl ml-auto mr-1 block w-fit" href="/"
+      >🡐 Back</a
+    >
+  </div>
+  <div
+    class="flex flex-wrap justify-between pt-20 md:pt-0 md:px-20 w-screen items-center md:pb-40 p-8"
+  >
+    <ul id="container" class="min-h-screen md:pt-60 flex flex-col gap-2">
+      {
+        projects.map((project, index) => (
+          <li
+            class="flex flex-col p-2 border"
+            style={{
+              animation: `unblur-in 0.4s linear forwards`,
+              animationDelay: `${index * 0.1}s`,
+              transform: `perspective(1000px) rotateX(${calculateValue(index, projects.length) * 0.3}deg) translateZ(${Math.abs(calculateValue(index, projects.length)) * -2}px)`,
+            }}
+          >
+            <p class="text-3xl font-bold">{project.name}</p>
+            <p class="text-xl">{project.description}</p>
+            <a
+                class="text-lg text-teal-300 hover:underline w-fit break-words max-w-full"
+              href={project.link}
+              target="_blank"
+            >
+              {project.link}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>
+<style>
+  @keyframes unblur-in {
+    0% {
+      filter: blur(10px);
+      opacity: 0;
+    }
+    100% {
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+  @media screen and (min-width: 780px) {
+    #top-center {
+      z-index: 99;
+      position: fixed;
+      left: 50%;
+      top: 4rem;
+      transform: translateX(-50%) perspective(1000px) rotateX(30deg);
+    }
+  }
+  #top-center a {
+    padding: 1rem 2rem;
+    transition: all 0.2s;
+  }
+  #top-center:hover a {
+    opacity: 0.5;
+  }
+</style>

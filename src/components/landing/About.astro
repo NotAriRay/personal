@@ -1,0 +1,213 @@
+---
+import Stats from "./Stats.astro";
+---
+
+<section>
+  <div class="lg:pl-20 lg:py-20 p-4 relative z-40">
+    <div class="md:h-[20vh] h-[5vh]"></div>
+    <div class="max-w-[90vw] w-fit" id="mid-left">
+      <h2 id="title" class="text-4xl border border-zinc-400 w-min">Hiya!</h2>
+      <h1 class="text-5xl">
+        I'm <span
+          class="text-transparent bg-clip-text bg-gradient-to-tr from-teal-400 via-purple-400 to-blue-500"
+          >AriRay</span
+        >
+      </h1>
+      <h2 class="max-w-full whitespace-normal text-3xl h-12 w-[30ch]">
+        Just a 15y/o <span id="text-rpd-text"></span><span
+          id="underscore"
+          class="text-blue-500">_</span
+        >
+      </h2>
+      <h2 class="text-2xl pt-7 whitespace-normal">he/him ✦ (GMT+2)</h2>
+      <div class="p-5">
+        <button
+          id="open"
+          class="p-3 bg-zinc-950 border-2 hover:scale-95 transition-all"
+          >⍈ More About Me</button
+        >
+      </div>
+    </div>
+    <Stats />
+  </div>
+  <dialog
+    id="more"
+    class="w-[60rem] max-w-[80vw] bg-zinc-950 border-teal-300 border-2 fixed"
+  >
+    <form method="dialog">
+      <div class="flex w-full sticky top-0">
+        <div class="flex-grow">
+          <div class="w-full h-2 bg-teal-300"></div>
+          <div class="h-1"></div>
+          <div class="w-full h-2 bg-teal-300"></div>
+          <div class="h-1"></div>
+          <div class="w-full h-2 bg-teal-300"></div>
+        </div>
+        <button
+          id="close"
+          class="block h-8 bg-teal-300 hover:bg-gradient-to-t hover:from-teal-400 hover:to-teal-300 transition-all text-black px-4"
+          >✖ Close dialog</button
+        >
+      </div>
+      <div class="p-4">
+        <h1 class="text-2xl pb-10 text-purple-500" id="head">More about me</h1>
+        <p class="text-zinc-400">
+          1. Thanks for opening this dialog!
+          <br />
+          <span class="text-zinc-200"
+            >I'm a 15 year old high school student from Kosovo.</span
+          >
+          I enjoy video games, coding, reading books, listening to albanian music
+          as well. I like doing 2D pixel art. Started coding early 2023. I'm also
+          in love with mountain biking and swimming.
+          <br />
+          <br />
+          Also enjoy games like minecraft, pvz, hollow knight and mindustry!
+          <br />
+        </p>
+      </div>
+    </form>
+  </dialog>
+</section>
+<script is:inline>
+  document.getElementById("open").addEventListener("click", () => {
+    document.getElementById("more").showModal();
+  });
+  document.getElementById("close").addEventListener("click", () => {
+    document.getElementById("more").close();
+  });
+</script>
+<script>
+  exec();
+  document.addEventListener("astro:after-swap", () => exec());
+  function exec() {
+    const texts: string[] = [
+      "developer",
+      "pvz enjoyer",
+      "pixel artist",
+      "minecraft enjoyer",
+      "with no life",
+      "highschool student",
+    ];
+    let currentIndex = 0;
+    let typedText = "";
+    let showUnderscore = false;
+    const textElement = document.getElementById("text-rpd-text");
+
+    const typeAndCycleText = async () => {
+      while (true) {
+        await typeText(texts[currentIndex]);
+        await sleep(2000);
+        await backspace();
+        currentIndex = (currentIndex + 1) % texts.length;
+      }
+    };
+
+    const typeText = (text: string) => {
+      return new Promise<void>((resolve) => {
+        let charIndex = 0;
+        const delay = 100;
+
+        const typingInterval = setInterval(() => {
+          if (charIndex < text.length) {
+            typedText += text[charIndex];
+            charIndex++;
+          } else {
+            clearInterval(typingInterval);
+            resolve();
+          }
+        }, delay);
+      });
+    };
+
+    const backspace = () => {
+      return new Promise<void>((resolve) => {
+        const delay = 50;
+        const textToType = typedText;
+        let charIndex = textToType.length;
+
+        const backspaceInterval = setInterval(() => {
+          if (charIndex > 0) {
+            typedText = textToType.substring(0, charIndex - 1);
+            charIndex--;
+          } else {
+            clearInterval(backspaceInterval);
+            resolve();
+          }
+        }, delay);
+      });
+    };
+
+    const sleep = (ms: number) => {
+      return new Promise<void>((resolve) => {
+        setTimeout(resolve, ms);
+      });
+    };
+    typeAndCycleText();
+    setInterval(() => {
+      showUnderscore = !showUnderscore;
+      if (document.getElementById("underscore")) {
+        document.getElementById("underscore").style.visibility = showUnderscore
+          ? "visible"
+          : "hidden";
+      }
+    }, 500);
+    setInterval(() => {
+      textElement.innerText = typedText;
+    }, 100);
+  }
+</script>
+<style>
+  #head {
+    text-shadow: 0 0 5px #3c6ac4;
+  }
+  div.flex-grow > div.bg-teal-300 {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #65e8d544;
+      filter: blur(10px);
+      z-index: 1;
+    }
+  }
+  dialog {
+    animation: fade-up 0.5s ease;
+    box-shadow: 0 0 10px 5px #65e8d544;
+    overflow: scroll;
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      outline: 5px solid #65e8d544;
+      z-index: -1;
+      filter: blur(10px);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+  }
+  #mid-left {
+    transform: perspective(1000px) rotateY(-4deg) rotateX(0deg)
+      translateX(-20px);
+  }
+  #underscore {
+    text-shadow: 0 0 5px #3c6ac4;
+  }
+
+  #title {
+    transform: perspective(1000px) rotateY(-6deg) rotateX(20deg);
+  }
+</style>

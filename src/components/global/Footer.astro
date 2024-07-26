@@ -1,0 +1,33 @@
+<footer>
+  <div class="md:fixed bg-black bottom-0 right-0 p-10 text-2xl">
+    <p class="text-neutral-300 text-lg">Made with Astro + Tailwind</p>
+  </div>
+</footer>
+<style>
+  footer {
+    background-color: #f3f4f6;
+  }
+  div {
+    /* transform: perspective(1000px) rotateX(-24deg) rotateY(20deg) rotateZ(0deg) translateY(-20px); */
+    transform: perspective(1000px) rotateY(20deg) rotateX(-20deg) rotateZ(-5deg);
+  }
+  a {
+    position: relative;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 0%;
+    background-color: #ffffff;
+    mix-blend-mode: exclusion;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  a:hover {
+    transform: scale(1.1);
+  }
+  a:hover::after {
+    width: 100%;
+  }
+</style>

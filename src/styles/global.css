@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Zed Sans";
+  src: url(../../Fonts/zed-sans-extended.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@media screen and (max-width: 780px) {
+  * {
+    transform: none !important;
+  }
+}
+* {
+  font-family: "Zed Sans", sans-serif;
+  min-width: 0;
+}
+::selection {
+  background: #38d2c0;
+  color: black;
+}
+a:focus,
+button:focus {
+  outline: 2px solid #38d2c0;
+  outline-offset: 2px;
+}
+body {
+  filter: brightness(0.9) url(#bloom);
+  color: white;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(at center, #ffffff00 40%, #000000 110%);
+  /* box-shadow: inset 0 0 0 4px red; */
+  z-index: 999;
+  pointer-events: none;
+}
+body::before {
+  content: "";
+  position: fixed;
+  z-index: 998;
+  background-image: linear-gradient(#ffffff01, #00000022);
+  inset: 0;
+  pointer-events: none;
+  background-repeat: repeat;
+  background-size: 100vw 1vh;
+  animation: bgscroll 2s linear infinite;
+}
+@keyframes bgscroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 1vh;
+  }
+}

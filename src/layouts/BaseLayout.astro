@@ -1,0 +1,23 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import Navigation from "@/components/global/Navigation.astro";
+import Footer from "@/components/global/Footer.astro";
+---
+
+<html lang="en" class="">
+  <head>
+    <BaseHead />
+  </head>
+  <body class="bg-black w-screen fisheye">
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+      <filter id="bloom">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5"></feGaussianBlur>
+        <feComposite in2="SourceGraphic" operator="arithmetic" k2="0.8" k3="1"
+        ></feComposite>
+      </filter>
+    </svg>
+    <Navigation />
+    <slot />
+    <Footer />
+  </body>
+</html>

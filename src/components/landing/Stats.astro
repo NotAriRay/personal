@@ -1,0 +1,32 @@
+<section>
+  <div
+    class="flex flex-col gap-2 items-center md:items-end justify-center md:justify-end w-fit"
+  >
+    <div class="border-2 w-fit" id="one">
+      <img
+        height="170"
+        width="450"
+        draggable="false"
+        src="https://github-readme-stats.vercel.app/api?username=NotAriRay&theme=neon&hide_border=true&text_bold=false&ring_color=22c55e&disable_animations=true&include_all_commits=true&hide=contribs"
+        alt="my github profile card"
+      />
+    </div>
+    <div class="border-2 w-fit" id="two">
+      <img
+        draggable="false"
+        src="https://github-readme-stats.vercel.app/api/top-langs/?username=NotAriRay&layout=compact&theme=neon&hide_border=true"
+        alt="my Top Languages"
+        width="300"
+        height="165"
+      />
+    </div>
+  </div>
+</section>
+<style>
+  #one {
+    transform: perspective(1000px) rotateX(-10deg) rotateY(-5deg);
+  }
+  #two {
+    transform: perspective(1000px) rotateX(-16deg) rotateY(-8deg) scale(0.9);
+  }
+</style>

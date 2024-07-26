@@ -1,0 +1,123 @@
+<section>
+  <div
+    class="flex relative lg:p-12 md:fixed top-0 p-4 z-[99] w-full justify-between flex-wrap"
+  >
+    <div class="flex flex-col text-2xl lg:text-3xl" id="top-left">
+      <div class="flex">
+        <button class="bg-black inline border" id="email"
+          >▤arikarakushi@proton.me</button
+        ><span class="unseen bg-lime-300 text-black w-min text-xl h-min email"
+          >✓Copied</span
+        >
+      </div>
+      <div class="flex">
+        <button class="bg-black inline border" id="discord"
+          >▤Discord: @ariray</button
+        ><span class="unseen bg-lime-300 text-black w-min text-xl h-min discord"
+          >✓Copied</span
+        >
+      </div>
+      <a
+        class="bg-black border"
+        href="https://github.com/NotAriRay"
+        target="_blank">🡔GitHub</a
+      >
+      <a
+        class="bg-black border"
+        href="https://ko-fi.com/notariray"
+        target="_blank">🡔Ko-Fi</a
+      >
+    </div>
+    <div class="flex flex-col text-2xl lg:text-3xl md:p-5 pt-5" id="top-right">
+      <a
+        class="bg-black border"
+        href="https://ko-fi.com/notariray"
+        target="_blank">Buy me a coffee 🡕</a
+      >
+    </div>
+  </div>
+</section>
+
+<script>
+  exec();
+  document.addEventListener("astro:after-swap", () => exec());
+  function exec() {
+    document
+      .querySelector("#discord")
+      .addEventListener("click", handleClickDiscord);
+    document
+      .querySelector("#email")
+      .addEventListener("click", handleClickEmail);
+    function handleClickDiscord() {
+      const span = document.querySelector("#top-left .discord");
+      navigator.clipboard.writeText("ariray");
+      span.classList.remove("unseen");
+      span.classList.add("seen");
+      setTimeout(() => {
+        span.classList.remove("seen");
+        span.classList.add("unseen");
+      }, 2000);
+    }
+    function handleClickEmail() {
+      const span = document.querySelector("#top-left .email");
+      navigator.clipboard.writeText("arikarakushi@proton.me");
+      span.classList.remove("unseen");
+      span.classList.add("seen");
+      setTimeout(() => {
+        span.classList.remove("seen");
+        span.classList.add("unseen");
+      }, 2000);
+    }
+  }
+</script>
+<style>
+  span {
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .unseen {
+    opacity: 0;
+    transform: translateY(0rem);
+  }
+  .seen {
+    opacity: 1;
+    transform: translateY(0.4rem);
+  }
+  #top-right {
+    transform: perspective(1000px) rotateY(20deg) rotateX(20deg) rotateZ(5deg);
+    position: relative;
+  }
+  #top-left {
+    transform: perspective(1000px) rotateY(-20deg) rotateX(20deg) rotateZ(-5deg);
+    position: relative;
+  }
+
+  #top-right a,
+  #top-left a,
+  #top-left button {
+    position: relative;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: fit-content;
+  }
+  #top-right a:hover,
+  #top-left a:hover,
+  #top-left button:hover {
+    transform: scale(1.1);
+  }
+  #top-right a::after,
+  #top-left a::after,
+  #top-left button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 0%;
+    background: white;
+    mix-blend-mode: difference;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  #top-right a:hover::after,
+  #top-right button:hover::after,
+  #top-left a:hover::after,
+  #top-left button:hover::after {
+    width: 100%;
+  }
+</style>
