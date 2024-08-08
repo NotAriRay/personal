@@ -17,12 +17,6 @@ export const projects: Project[] = [
     link: "https://github.com/NotAriRay/dotfiles",
   },
   {
-    name: "More coming soon!",
-    description:
-      "I will update this page with every new project I make!",
-    link: " ",
-  },
-  {
     name: "AriRay's Website",
     description:
       "This website is fully open source for you to view the code!",
@@ -33,5 +27,11 @@ export const projects: Project[] = [
     description: 
       "A simple python game",
     link: "https://github.com/NotAriRay/HigherOrLower"
+  },
+  {
+    name: "More coming soon!",
+    description:
+      "I will update this page with every new project I make!",
+    link: " ",
   },
 ];
