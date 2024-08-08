@@ -28,4 +28,10 @@ export const projects: Project[] = [
       "This website is fully open source for you to view the code!",
     link: "https://github.com/NotAriRay/personal",
   },
+  {
+    name: "Higher or Lower (HOL)",
+    description: 
+      "A simple python game",
+    link: "https://github.com/NotAriRay/HigherOrLower"
+  },
 ];
