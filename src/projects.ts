@@ -22,4 +22,10 @@ export const projects: Project[] = [
       "I will update this page with every new project I make!",
     link: " ",
   },
+  {
+    name: "AriRay's Website",
+    description:
+      "This website is fully open source for you to view the code!",
+    link: "https://github.com/NotAriRay/personal",
+  },
 ];
